@@ -10,12 +10,12 @@ class Logo {
     });
     this.originalColor = color(this.draw.attr().fill);
     this.rotateColors();
-
-    console.log(this.letterCPath);
-    console.log(this.letterEPath);
-    console.log(this.letterDPath);
-    console.log(this.letterAPath);
-    console.log(this.letterRPath);
+    this.paths = [];
+    this.children.forEach((child) => {
+      if (this.hasPath(child)) {
+        this.paths.push(new Path(child));
+      }
+    });
   }
 
   rotateColors() {
@@ -24,8 +24,6 @@ class Logo {
         stroke: this.saturateColor(),
         fill: this.saturateColor()
       });
-      // console.log(this.randomNumber);
-      // console.log(this.mixColor("yellow"));
     },
     100)
   }
@@ -38,34 +36,51 @@ class Logo {
     return this.originalColor.saturate(this.randomNumber).hex();
   }
 
-  path(index) {
-    return this.draw.children()[index].attr("d").split(",");
+  hasPath(elem) {
+    return typeof elem.attr("d") !== "undefined";
   }
 
-  get letterCPath () {
-    return this.path(1);
-  }
-
-  get letterEPath () {
-    return this.path(2);
-  }
-
-  get letterDPath () {
-    return this.path(3);
-  }
-
-  get letterAPath () {
-    return this.path(4);
-  }
-
-  get letterRPath () {
-    return this.path(5);
+  get children() {
+    return this.draw.children();
   }
 
   get randomNumber() {
-    min = Math.ceil(1);
-    max = Math.floor(100);
-    return (Math.floor(Math.random() * (max - min + 1)) + min) / 100; //The maximum is inclusive and the minimum is inclusive 
+    return new RandomNumber().float;
+  }
+}
+
+
+class Path {
+  constructor(elem) {
+    this.elem = elem;
+  }
+
+  animate() {
+    console.log("animate");
+  }
+
+  isFloat(v) {
+    return !Number.isNaN(parseFloat(v));
+  }
+
+  get path() {
+    return this.elem.attr("d").split(",");
+  }
+
+  get randomFloat() {
+    return new RandomNumber().float;
+  }
+}
+
+class RandomNumber {
+  constructor() {
+    const min = Math.ceil(1);
+    const max = Math.floor(100);
+    this.number = Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  get float() {
+    return this.number / 100;
   }
 }
 
