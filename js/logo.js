@@ -3,24 +3,31 @@ const color = require("color");
 
 class Logo {
   constructor(elementId) {
-    this.draw = svg.get(elementId);
-    this.draw.attr({
-      stroke: "#ff5c5c",
-      fill: "#ff5c5c"
-    });
-    this.originalColor = color(this.draw.attr().fill);
-    this.rotateColors();
+    this.templateSvg = svg.get(elementId);
     this.paths = [];
     this.children.forEach((child) => {
       if (this.hasPath(child)) {
         this.paths.push(new Path(child));
       }
     });
+
+    this.generatedLogo = svg('generated').size('100%', '100%');
+    this.generatedLogo.viewbox(0, 0, 203.2, 75.99);
+    this.generatedLogo.attr({
+      stroke: "#ff5c5c",
+      fill: "#ff5c5c"
+    });
+    this.originalColor = color(this.generatedLogo.attr().fill);
+
+    this.paths.forEach((p) => {
+      this.generatedLogo.path(p.path).attr("transform", p.transform);
+    });
+    this.rotateColors();
   }
 
   rotateColors() {
     window.setInterval(() => {
-      this.draw.attr({
+      this.generatedLogo.attr({
         stroke: this.saturateColor(),
         fill: this.saturateColor()
       });
@@ -41,7 +48,7 @@ class Logo {
   }
 
   get children() {
-    return this.draw.children();
+    return this.templateSvg.children();
   }
 
   get randomNumber() {
@@ -64,7 +71,15 @@ class Path {
   }
 
   get path() {
-    return this.elem.attr("d").split(",");
+    return this.elem.attr("d");
+  }
+
+  get transform() {
+    return this.elem.attr("transform");
+  }
+
+  get pathData() {
+    return this.path.split(",");
   }
 
   get randomFloat() {
