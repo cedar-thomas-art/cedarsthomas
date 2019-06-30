@@ -1,4 +1,6 @@
 const svg = require("svg.js");
+const path = require("./path");
+const randomNumber = require("./random-number");
 const color = require("color");
 
 class Logo {
@@ -7,7 +9,7 @@ class Logo {
     this.paths = [];
     this.children.forEach((child) => {
       if (this.hasPath(child)) {
-        this.paths.push(new Path(child));
+        this.paths.push(new path(child));
       }
     });
 
@@ -18,11 +20,18 @@ class Logo {
       fill: "#ff5c5c"
     });
     this.originalColor = color(this.generatedLogo.attr().fill);
-
     this.paths.forEach((p) => {
-      this.generatedLogo.path(p.path).attr("transform", p.transform);
+      this.generatedLogo.path(p.dAttribute).attr("transform", p.transform);
     });
+
     this.rotateColors();
+    this.startAnimation();
+  }
+
+  startAnimation() {
+    this.paths.forEach((p) => {
+      p.animate();
+    });
   }
 
   rotateColors() {
@@ -33,10 +42,6 @@ class Logo {
       });
     },
     100)
-  }
-
-  mixColor(colorValue) {
-    return this.originalColor.mix(color(colorValue)).hex()
   }
 
   saturateColor() {
@@ -52,50 +57,7 @@ class Logo {
   }
 
   get randomNumber() {
-    return new RandomNumber().float;
-  }
-}
-
-
-class Path {
-  constructor(elem) {
-    this.elem = elem;
-  }
-
-  animate() {
-    console.log("animate");
-  }
-
-  isFloat(v) {
-    return !Number.isNaN(parseFloat(v));
-  }
-
-  get path() {
-    return this.elem.attr("d");
-  }
-
-  get transform() {
-    return this.elem.attr("transform");
-  }
-
-  get pathData() {
-    return this.path.split(",");
-  }
-
-  get randomFloat() {
-    return new RandomNumber().float;
-  }
-}
-
-class RandomNumber {
-  constructor() {
-    const min = Math.ceil(1);
-    const max = Math.floor(100);
-    this.number = Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  get float() {
-    return this.number / 100;
+    return new randomNumber().float;
   }
 }
 
