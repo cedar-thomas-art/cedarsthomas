@@ -2,6 +2,8 @@ const svg = require("svg.js");
 const path = require("./path");
 const randomNumber = require("./random-number");
 const color = require("color");
+const pattern = require("./svg-pattern");
+const saturator = require("./saturator");
 
 class Logo {
   constructor(elementId) {
@@ -19,7 +21,7 @@ class Logo {
       stroke: "#ff5c5c",
       fill: "#ff5c5c"
     });
-    this.originalColor = color(this.generatedLogo.attr().fill);
+    this.originalColor = this.generatedLogo.attr().fill;
     this.paths.forEach((p) => {
       this.generatedLogo.path(p.dAttribute).attr("transform", p.transform);
     });
@@ -45,7 +47,7 @@ class Logo {
   }
 
   saturateColor() {
-    return this.originalColor.saturate(this.randomNumber).hex();
+    return new saturator(this.originalColor).randomlySaturated;
   }
 
   hasPath(elem) {
