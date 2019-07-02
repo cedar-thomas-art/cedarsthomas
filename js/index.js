@@ -1,1 +1,3 @@
-console.log("hello world");
+routes = require("./routing");
+
+r = new routes();
