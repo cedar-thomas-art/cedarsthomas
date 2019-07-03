@@ -23,7 +23,7 @@ class Route {
   }
 
   index() {
-    this.render("template-home", this.homeElem);
+    this.render("template-home", this.homeElem, {hello: "world"});
   }
 
   works() {
