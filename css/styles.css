@@ -7,6 +7,25 @@ h1, h2, h3, h4 ,h5, h6 {
   font-family: 'Roboto', sans-serif;
 }
 
+nav {
+  font-size: 4em;
+  text-transform: uppercase;
+}
+
+nav a {
+  color: #000;
+}
+
+nav ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+nav ul ul {
+  display: none;
+}
+
 .hidden {
   border: 0;
   clip: rect(0 0 0 0);
