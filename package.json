@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "autoprefixer": "^9.6.0",
+    "handlebars": "^4.1.2",
     "page": "^1.11.4",
-    "parcel-plugin-handlebars-precompile": "^1.0.0",
     "postcss-modules": "^1.4.1",
     "svg.js": "^2.7.1"
   }
