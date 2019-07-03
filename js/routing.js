@@ -21,7 +21,12 @@ class Route {
   }
 
   index() {
-    // this.render("template-home", this.homeElem, {hello: "world"});
+    const logoLink = this.getById("main-logo-link");
+    const logo = this.getById("main-logo");
+
+    logoLink.addEventListener("click", () => {
+      logo.classList.remove("home");
+    });
   }
 
   works() {

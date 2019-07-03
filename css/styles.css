@@ -27,7 +27,13 @@ nav ul ul {
 }
 
 #main-logo {
-  margin-top: 25%;
+  transition: margin-top 700ms, max-width 700ms;
+  max-width: 25%;
+}
+
+#main-logo.home {
+  margin-top: 15%;
+  max-width: 100%;
 }
 
 .hidden {
