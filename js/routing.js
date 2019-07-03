@@ -14,10 +14,13 @@ class Route {
   }
 
   render(src, dest, ctx={}) {
-    const templateHtml = this.templateSrc(src);
-    const hb = handlebars.compile(templateHtml)
-    const compiled = hb(ctx);
-    dest.innerHTML = compiled;
+    return new Promise((resolve, reject) => {
+      const templateHtml = this.templateSrc(src);
+      const hb = handlebars.compile(templateHtml)
+      const compiled = hb(ctx);
+      dest.innerHTML = compiled;
+      resolve(compiled);
+    });
   }
 
   index() {
@@ -26,12 +29,16 @@ class Route {
 
     logoLink.addEventListener("click", () => {
       logo.classList.remove("home");
-      this.render("template-nav", this.navElem);
+      this.render("template-nav", this.navElem)
+        .then(() => {
+          this.worksLink.addEventListener("click", () => {
+            this.worksSection.classList.toggle("open");
+          });
+      });
     });
   }
 
   works() {
-    this.render("template-nav", this.navElem);
     console.log("works");
   }
 
@@ -74,6 +81,14 @@ class Route {
 
   get navElem() {
     return document.getElementsByTagName("nav")[0];
+  }
+
+  get worksLink() {
+    return this.getById("nav-works");
+  }
+
+  get worksSection() {
+    return this.getById("works-section");
   }
 }
 

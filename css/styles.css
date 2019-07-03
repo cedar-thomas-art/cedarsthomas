@@ -24,6 +24,12 @@ nav ul {
 
 nav ul ul {
   display: none;
+  font-size: 0.5em;
+  margin-left: 2em;
+}
+
+nav ul ul.open {
+  display: block;
 }
 
 #main-logo {
