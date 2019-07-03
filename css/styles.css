@@ -23,13 +23,18 @@ nav ul {
 }
 
 nav ul ul {
-  display: none;
   font-size: 0.5em;
+  height: auto;
   margin-left: 2em;
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: max-height 700ms, max-width 700ms;
 }
 
 nav ul ul.open {
-  display: block;
+  max-height: 300px;
+  max-width: 100%;
 }
 
 #main-logo {
