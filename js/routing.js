@@ -26,6 +26,7 @@ class Route {
 
     logoLink.addEventListener("click", () => {
       logo.classList.remove("home");
+      this.render("template-nav", this.navElem);
     });
   }
 
