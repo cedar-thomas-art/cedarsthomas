@@ -26,6 +26,10 @@ nav ul ul {
   display: none;
 }
 
+#main-logo {
+  margin-top: 25%;
+}
+
 .hidden {
   border: 0;
   clip: rect(0 0 0 0);
