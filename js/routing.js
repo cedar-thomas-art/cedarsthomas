@@ -3,8 +3,6 @@ handlebars = require('handlebars');
 
 class Route {
   constructor() {
-    this.render("template-nav", this.navElem);
-
     page('/',                       () => { this.index() });
     page('/works',                  () => { this.works() });
     page('/works/painting-drawing', () => { this.paintingDrawing() });
@@ -23,30 +21,36 @@ class Route {
   }
 
   index() {
-    this.render("template-home", this.homeElem, {hello: "world"});
+    // this.render("template-home", this.homeElem, {hello: "world"});
   }
 
   works() {
+    this.render("template-nav", this.navElem);
     console.log("works");
   }
 
   paintingDrawing() {
+    this.render("template-nav", this.navElem);
     console.log("painting & drawing");
   }
 
   sculpture() {
+    this.render("template-nav", this.navElem);
     console.log("sculpture");
   }
 
   photography() {
+    this.render("template-nav", this.navElem);
     console.log("photography");
   }
 
   contact() {
+    this.render("template-nav", this.navElem);
     console.log("contact");
   }
 
   notFound() {
+    this.render("template-nav", this.navElem);
     console.log("404 not found");
   }
 
