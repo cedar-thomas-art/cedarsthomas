@@ -43,22 +43,18 @@ class Route {
   }
 
   paintingDrawing() {
-    this.render("template-nav", this.navElem);
     console.log("painting & drawing");
   }
 
   sculpture() {
-    this.render("template-nav", this.navElem);
     console.log("sculpture");
   }
 
   photography() {
-    this.render("template-nav", this.navElem);
     console.log("photography");
   }
 
   contact() {
-    this.render("template-nav", this.navElem);
     console.log("contact");
   }
 
