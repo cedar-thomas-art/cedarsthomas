@@ -1,3 +1,3 @@
-routes = require("./routing");
+const Routes = require("./routing");
 
-r = new routes();
+new Routes().init();

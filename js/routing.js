@@ -1,22 +1,22 @@
-page = require('page');
-handlebars = require('handlebars');
+const page = require("page");
+const handlebars = require("handlebars");
 
 class Route {
-  constructor() {
-    page('/',                       () => { this.index() });
-    page('/works',                  () => { this.works() });
-    page('/works/painting-drawing', () => { this.paintingDrawing() });
-    page('/works/sculpture',        () => { this.sculpture() });
-    page('/works/photography',      () => { this.photography() });
-    page('/contact',                () => { this.contact() });
-    page('*',                       () => { this.notFound() });
+  init() {
+    page("/", () => { this.index(); });
+    page("/works", () => { this.works(); });
+    page("/works/painting-drawing", () => { this.paintingDrawing(); });
+    page("/works/sculpture", () => { this.sculpture(); });
+    page("/works/photography", () => { this.photography(); });
+    page("/contact", () => { this.contact(); });
+    page("*", () => { this.notFound(); });
     page();
   }
 
-  render(src, dest, ctx={}) {
+  render(src, dest, ctx = {}) {
     return new Promise((resolve, reject) => {
       const templateHtml = this.templateSrc(src);
-      const hb = handlebars.compile(templateHtml)
+      const hb = handlebars.compile(templateHtml);
       const compiled = hb(ctx);
       dest.innerHTML = compiled;
       resolve(compiled);
@@ -34,7 +34,7 @@ class Route {
           this.worksLink.addEventListener("click", () => {
             this.worksSection.classList.toggle("open");
           });
-      });
+        });
     });
   }
 
@@ -71,7 +71,7 @@ class Route {
     return document.getElementById(id);
   }
 
-  get homeElem() {;
+  get homeElem() {
     return this.getById("home-content");
   }
 

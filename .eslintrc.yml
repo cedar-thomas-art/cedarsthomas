@@ -1,0 +1,5 @@
+extends: standard
+rules:
+  quotes: ["error", "double", {avoidEscape: true}]
+  space-before-function-paren: ["error", "never"]
+  semi: ["error", "always"]
