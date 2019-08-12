@@ -4,6 +4,7 @@ const handlebars = require("handlebars");
 class Route {
   init() {
     page("/", () => { this.index(); });
+    page("/about", () => { this.about(); });
     page("/works", () => { this.works(); });
     page("/works/painting-drawing", () => { this.paintingDrawing(); });
     page("/works/sculpture", () => { this.sculpture(); });
@@ -56,6 +57,10 @@ class Route {
 
   contact() {
     console.log("contact");
+  }
+
+  about() {
+    console.log("about");
   }
 
   notFound() {
