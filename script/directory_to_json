@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+
+require "json"
+require "pathname"
+
+directory = ARGV.first
+path = Pathname.new(directory)
+
+data = {}
+
+path.children.collect do |child|
+  if child.directory?
+    data[child.basename] = []
+  end
+end
+
+data.each do |d, files|
+  p = Pathname.new("#{directory}/#{d}")
+
+  p.children.collect do |c|
+    if c.file?
+      data[d].push(c)
+    end
+  end
+end
+
+puts data.to_json

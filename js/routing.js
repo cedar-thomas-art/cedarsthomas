@@ -1,7 +1,12 @@
 const page = require("page");
 const handlebars = require("handlebars");
+const image = require("./img");
 
 class Route {
+  constructor() {
+    console.log(image.images);
+  }
+
   init() {
     page("/", () => { this.index(); });
     page("/about", () => { this.about(); });
