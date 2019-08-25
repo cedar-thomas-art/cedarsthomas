@@ -49,7 +49,8 @@ class Route {
   }
 
   paintingDrawing() {
-    console.log("painting & drawing");
+    console.log(image.images.paintingDrawing);
+    this.render("template-imgs", this.mainContentElem);
   }
 
   sculpture() {
@@ -79,6 +80,10 @@ class Route {
 
   getById(id) {
     return document.getElementById(id);
+  }
+
+  get mainContentElem() {
+    return this.getById("main-content-container");
   }
 
   get homeElem() {
