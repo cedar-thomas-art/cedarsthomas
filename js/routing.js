@@ -1,22 +1,22 @@
 const page = require("page");
 const handlebars = require("handlebars");
-const image = require("./img");
 
 class Route {
-  constructor() {
-    console.log(image.images);
-  }
-
   init() {
     page("/", () => { this.index(); });
     page("/about", () => { this.about(); });
     page("/works", () => { this.works(); });
     page("/works/painting-drawing", () => { this.paintingDrawing(); });
+    page.exit("/works/painting-drawing", () => { this.clear(); });
     page("/works/sculpture", () => { this.sculpture(); });
     page("/works/photography", () => { this.photography(); });
     page("/contact", () => { this.contact(); });
     page("*", () => { this.notFound(); });
     page();
+  }
+
+  clear() {
+    this.mainContentElem.innerHTML = "";
   }
 
   render(src, dest, ctx = {}) {
@@ -49,7 +49,6 @@ class Route {
   }
 
   paintingDrawing() {
-    console.log(image.images.paintingDrawing);
     this.render("template-imgs", this.mainContentElem);
   }
 
