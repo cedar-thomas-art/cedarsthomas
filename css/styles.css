@@ -37,6 +37,24 @@ nav ul ul.open {
   max-width: 100%;
 }
 
+#img-list {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.works-img {
+  max-width: 95%;
+}
+
+.works-img-item {
+  display: inline-block;
+  list-style: none;
+  text-align: center;
+  width: calc(100% / 3);
+}
+
 #main-logo {
   transition: margin-top 700ms, max-width 700ms;
   max-width: 25%;
