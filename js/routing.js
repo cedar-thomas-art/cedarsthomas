@@ -29,6 +29,16 @@ class Route {
     });
   }
 
+  append(src, dest, ctx = {}) {
+    return new Promise((resolve, reject) => {
+      const templateHtml = this.templateSrc(src);
+      const hb = handlebars.compile(templateHtml);
+      const compiled = hb(ctx);
+      dest.innerHTML += compiled;
+      resolve(compiled);
+    });
+  }
+
   index() {
     const logoLink = this.getById("main-logo-link");
     const logo = this.getById("main-logo");
@@ -49,7 +59,24 @@ class Route {
   }
 
   paintingDrawing() {
-    this.render("template-imgs", this.mainContentElem);
+    this.render("template-imgs", this.mainContentElem)
+      .then(() => {
+        const imgLinks = document.getElementsByClassName("works-img-link");
+
+        Array.prototype.forEach.call(imgLinks, (link) => {
+          link.addEventListener("click", (event) => {
+            const img = event.target.closest("img");
+            event.preventDefault();
+            this.append("template-img-modal", this.pageBody)
+              .then(() => {
+                const modal = this.getByClass("modal-contents")[0];
+                console.log(img);
+                console.log(img.innerHTML);
+                modal.innerHTML = img.innerHTML;
+              });
+          });
+        });
+      });
   }
 
   sculpture() {
@@ -79,6 +106,14 @@ class Route {
 
   getById(id) {
     return document.getElementById(id);
+  }
+
+  getByClass(className) {
+    return document.getElementsByClassName(className);
+  }
+
+  get pageBody() {
+    return document.getElementsByTagName("body")[0];
   }
 
   get mainContentElem() {
