@@ -67,12 +67,10 @@ class Route {
           link.addEventListener("click", (event) => {
             const img = event.target.closest("img");
             event.preventDefault();
-            this.append("template-img-modal", this.pageBody)
+            this.render("template-img-container", this.mainContentElem)
               .then(() => {
-                const modal = this.getByClass("modal-contents")[0];
-                console.log(img);
-                console.log(img.innerHTML);
-                modal.innerHTML = img.innerHTML;
+                const container = this.getByClass("img-container")[0];
+                container.innerHTML = img.outerHTML;
               });
           });
         });
@@ -134,6 +132,10 @@ class Route {
 
   get worksSection() {
     return this.getById("works-section");
+  }
+
+  get modalContainer() {
+    return this.getById("img-modal-container");
   }
 }
 
