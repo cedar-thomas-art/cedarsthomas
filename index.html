@@ -17,14 +17,42 @@
     <div class="col-xs-12">
       <h1 class="hidden">Cedar S. Thomas</h1>
       <a href="/" id="main-logo-link"><img alt="Cedar" src="./img/CEDARintro.svg" id="main-logo" class="home"></a>
+      <p class="h2">Hit the tab key to zoom in to images.</p>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-5">
-      <nav></nav>
-    </div>
-    <div class="col-xs-7">
-      <main id="main-content-container"></main>
+    <div class="col-xs-12">
+      <main id="main-content-container">
+        <ul id="img-list" class="row between-xs">
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/create-pleasure.jpg" alt="Create Pleasure" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/dreamland.jpg" alt="Dreamland" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/faces.jpg" alt="Faces" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/hand-leaves-hand-fire.jpg" alt="One hand with leaves, the other with fire" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/i-wanna-know-how-you-think.jpg" alt="I wanna know what you think" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/isnt-this-weather-nice.jpg" alt="Isn't this weather nice" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/look-around-yourself.jpg" alt="Look around yourself" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/one-day.jpg" alt="One day" class="works-img"></a>
+          </li>
+          <li class="works-img-item box">
+            <a class="works-img-link" href="#"><img src="./img/painting-drawing/what-do-you-think-about.jpg" alt="What do you think about" class="works-img"></a>
+          </li>
+        </ul>
+      </main>
     </div>
   </div>
   <template id="template-home">
@@ -91,8 +119,8 @@
   </template>
   <template id="template-img-container">
     <div class="img-container"></div>
-    <div class="img-controls">
-      <a href="/works/painting-drawing">Close</a>
+    <div id="img-controls">
+      <p><a href="/works/painting-drawing">Close</a></p>
     </div>
   </template>
   <script src="./js/index.js"></script>

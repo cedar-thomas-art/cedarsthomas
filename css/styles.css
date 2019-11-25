@@ -7,6 +7,10 @@ h1, h2, h3, h4 ,h5, h6 {
   font-family: "Roboto", sans-serif;
 }
 
+.h2 {
+  font-size: 2em;
+}
+
 nav {
   font-size: 4em;
   text-transform: uppercase;
@@ -51,8 +55,18 @@ nav ul ul.open {
 .works-img-item {
   display: inline-block;
   list-style: none;
+  max-width: calc(100% / 3);
   text-align: center;
+  transition: max-width 700ms;
   width: calc(100% / 3);
+}
+
+.works-img-link:focus {
+  left: 0;
+  max-width: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 #main-logo {
@@ -61,7 +75,7 @@ nav ul ul.open {
 }
 
 #main-logo.home {
-  margin-top: 15%;
+  /* margin-top: 15%; */
   max-width: 100%;
 }
 
